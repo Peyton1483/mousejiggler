@@ -129,15 +129,15 @@ public static class Program
     // -s 0.5 --seconds 0.5
     var optPeriod = new Option<double>("--seconds", "-s")
     {
-      Description = "Set number of seconds for the jiggle interval (minimum 0.1).",
+      Description = "Set number of seconds for the jiggle interval (minimum 0.001).",
       DefaultValueFactory = _ => Settings.Default.JigglePeriod
     };
 
     optPeriod.Validators.Add (result =>
     {
       var value = result.GetValue(optPeriod);
-      if (value < 0.1)
-        result.AddError ("Period cannot be shorter than 0.1 seconds.");
+      if (value < 0.001)
+        result.AddError ("Period cannot be shorter than 0.001 seconds.");
       else if (value > 10800)
         result.AddError ("Period cannot be longer than 10800 seconds.");
     });

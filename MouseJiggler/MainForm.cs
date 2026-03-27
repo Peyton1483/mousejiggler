@@ -193,7 +193,7 @@ public partial class MainForm : Form
     if (this.RandomTimer)
     {
       // Random interval between 0.1s and JigglePeriod
-      var newIntervalMs = (int)(Random.Shared.NextDouble() * (this.JigglePeriod - 0.1) * 1000 + 100);
+      var newIntervalMs = (int)(Random.Shared.NextDouble() * (this.JigglePeriod - 0.001) * 1000 + 1);
       this.lbPeriod.Text = $@"{newIntervalMs / 1000.0:0.##} s";
       this.jiggleTimer.Interval = newIntervalMs;
     }
